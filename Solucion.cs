@@ -35,8 +35,9 @@ namespace Parcial{
 
         /*2 - Se ingresa por teclado la temperatura máxima, en grados, día a día durante una semana.
         Se pide determinar el día de mayor temperatura, el de menor y el promedio. */
-    /*NOTA: no aclara que hacer si hay mas de un dia de la semana que tiene menor o mayor temperatura, 
-    considero que toma el primer dia que hubo esa temperatura*/
+    /*NOTA: Pide que determinemos EL (uno solo) dia de mayor/menor temperatura. No aclara que hacer 
+    si hay mas de un dia de la semana que tiene menor o mayor temperatura. Considero que se toma el primer 
+    dia que hubo esa temperatura como valor.*/
         public void calcularTemperatura(){
 
             int[] semana = new int[7];
@@ -70,18 +71,22 @@ namespace Parcial{
                         diaMin=i;
                         minimo=semana[i];
 
-                    }
+                    }else{
 
-                    if(maximo<semana[i]){
-                        diaMax=i;
-                        maximo=semana[i];
+                        if(maximo<semana[i]){
+                            diaMax=i;
+                            maximo=semana[i];
+                        }
+
+                        
+                        if(minimo>semana[i]){
+                            diaMin=i;
+                            minimo=semana[i];
+                        }
+
                     }
 
                     
-                    if(minimo>semana[i]){
-                        diaMin=i;
-                        minimo=semana[i];
-                    }
                 }
 
             promedio = sum/semana.Length;
