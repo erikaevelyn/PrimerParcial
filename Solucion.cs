@@ -6,17 +6,32 @@ namespace Parcial{
 
         /*1 - Ingresar un número y mostrar la suma de los números que lo anteceden. */
 
-        public int anteceder(int num){ /*NOTA: asumo que se trata de un numero entero. */
+        public void anteceder(){ /*NOTA: asumo que se trata de un numero entero. */
 
-        int result = 0;
-        int elegido = num;
+        Console.WriteLine("Ingrese un numero: ");
+            int numero;
+            bool conversion = Int32.TryParse(Console.ReadLine(), out numero);
+            if(!conversion){
+                do{
+                Console.WriteLine($"El dato ingresado no es valido. Solo se aceptan numeros enteros."); 
+                Console.WriteLine("Ingrese un numero: ");
+                conversion = Int32.TryParse(Console.ReadLine(), out numero);
+                }while(!conversion);    
+            }
 
-        for(int i=0; i<elegido; i++){
+            int result = 0;
 
-            result+=i;
+            for(int i=0; i<numero; i++){
+
+                result+=i;
+            }
+                
+            Console.WriteLine($"La suma de los números que anteceden al {numero} es: {result}");  
         }
-        return result;
-        }
+
+        
+        
+        
 
         /*2 - Se ingresa por teclado la temperatura máxima, en grados, día a día durante una semana.
         Se pide determinar el día de mayor temperatura, el de menor y el promedio. */
@@ -35,7 +50,18 @@ namespace Parcial{
 
                 for(int i=0; i<semana.Length; i++){
                     Console.WriteLine($"Ingrese una temperatura maxima para el dia {i+1}: ");
-                    semana[i] = Convert.ToInt32(Console.ReadLine());
+
+                    int numero;
+                    bool conversion = Int32.TryParse(Console.ReadLine(), out numero);
+                    if(!conversion){
+                        do{
+                        Console.WriteLine($"El dato ingresado no es valido. Solo se aceptan numeros enteros."); 
+                        Console.WriteLine($"Ingrese una temperatura maxima para el dia {i+1}: ");
+                        conversion = Int32.TryParse(Console.ReadLine(), out numero);
+                        }while(!conversion);
+                    }
+
+                    semana[i] = numero;
                     sum+=semana[i];
 
                     if(i==0){
